@@ -26,7 +26,7 @@ const projects = [
 
 export const SelectedProjects = () => {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-10 px-4">
       {projects.map((project) => (
         <Link
           key={project.title}
