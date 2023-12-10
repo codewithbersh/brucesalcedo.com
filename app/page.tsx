@@ -1,5 +1,6 @@
 import { Header } from "./_components/header";
 import { Projects } from "./_components/projects";
+import { Reading } from "./_components/reading";
 import { Technologies } from "./_components/technologies";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
       <Header />
       <Projects />
       <Technologies />
+      <Reading />
     </div>
   );
 }
