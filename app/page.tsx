@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
+import { Header } from "./_components/header";
 
 export default function Home() {
   return (
-    <div>
-      <Button>This is a button</Button>
+    <div className="flex flex-col gap-32 my-32 mx-auto max-w-[608px]">
+      <Header />
     </div>
   );
 }
