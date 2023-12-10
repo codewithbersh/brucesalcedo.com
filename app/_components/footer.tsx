@@ -39,6 +39,7 @@ export const Footer = () => {
         <div className="flex gap-10">
           {socials.map((social) => (
             <Link
+              key={social.label}
               href={social.link}
               className="cursor-pointer text-muted-foreground underline underline-offset-2 transition-all duration-300 ease-in-out hover:text-primary"
               target="_blank"
