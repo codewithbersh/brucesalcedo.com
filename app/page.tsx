@@ -1,7 +1,8 @@
 import { Header } from "./_components/header";
 import { Projects } from "./_components/projects";
-import { Reading } from "./_components/reading";
 import { Technologies } from "./_components/technologies";
+import { Reading } from "./_components/reading";
+import { Footer } from "./_components/footer";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Projects />
       <Technologies />
       <Reading />
+      <Footer />
     </div>
   );
 }
