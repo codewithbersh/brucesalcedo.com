@@ -2,7 +2,7 @@ import { Header } from "./_components/header";
 
 export default function Home() {
   return (
-    <div className="flex flex-col gap-32 my-32 mx-auto max-w-[608px]">
+    <div className="mx-auto my-32 flex max-w-[608px] flex-col gap-32">
       <Header />
     </div>
   );
