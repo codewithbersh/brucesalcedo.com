@@ -3,6 +3,8 @@ import "@/styles/globals.css";
 import { GeistSans as font } from "geist/font/sans";
 
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Header } from "./_components/header";
+import { Footer } from "./_components/footer";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -23,7 +25,11 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <div className="mx-auto flex max-w-[608px] flex-col gap-32 py-32">
+            <Header />
+            <main>{children}</main>
+            <Footer />
+          </div>
         </ThemeProvider>
       </body>
     </html>
