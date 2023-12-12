@@ -29,6 +29,24 @@ const projects = [
   },
 ];
 
+const more = [
+  {
+    label: "Github",
+    icon: Icons.github,
+    link: "https://github.com/codewithbersh",
+  },
+  {
+    label: "X (Twitter)",
+    icon: Icons.twitter,
+    link: "https://twitter.com/codewithbersh",
+  },
+  {
+    label: "read.cv",
+    icon: Icons.readCV,
+    link: "https://read.cv/brucesalcedo",
+  },
+];
+
 export const Navigation = () => {
   const [copied, setCopied] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
@@ -100,6 +118,7 @@ export const Navigation = () => {
                 <Link
                   className="grid h-10 w-10 place-items-center rounded-md bg-neutral-950 transition-opacity duration-300 ease-in-out hover:opacity-75"
                   href={link}
+                  target="_blank"
                 >
                   <Icon />
                 </Link>
@@ -128,6 +147,31 @@ export const Navigation = () => {
                   {label}
                 </div>
               </div>
+            ))}
+          </div>
+
+          <div className="rounded-sm bg-neutral-200 px-2 py-[6px] text-xs font-medium leading-none dark:bg-neutral-800">
+            More
+          </div>
+
+          <div className="flex flex-col gap-2">
+            {more.map(({ icon: Icon, label, link }) => (
+              <Link
+                key={label}
+                className="flex cursor-pointer items-center gap-2 rounded px-2 py-1 transition-all duration-300 ease-in-out hover:bg-neutral-200 dark:hover:bg-neutral-800"
+                href={link}
+                target="_blank"
+              >
+                <div className="flex h-6 w-6 items-center justify-center rounded-sm bg-primary">
+                  <Icon />
+                </div>
+
+                <div className="text-sm">{label}</div>
+
+                <div className="ml-auto text-xs text-muted-foreground">
+                  Link
+                </div>
+              </Link>
             ))}
           </div>
         </div>
