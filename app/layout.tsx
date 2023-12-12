@@ -3,7 +3,7 @@ import "@/styles/globals.css";
 import { GeistSans as font } from "geist/font/sans";
 import { cn } from "@/lib/utils";
 
-import { ThemeProvider } from "@/components/providers/theme-provider";
+import { Providers } from "@/components/providers/providers";
 import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
 import { Navigation } from "./_components/navigation";
@@ -23,12 +23,7 @@ export default function RootLayout({
       <body
         className={cn("relative bg-background antialiased", font.className)}
       >
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          storageKey="discord-theme"
-        >
+        <Providers>
           <div className="mx-auto flex max-w-[608px] flex-col gap-32 py-32">
             <Header />
             <main>{children}</main>
@@ -36,7 +31,7 @@ export default function RootLayout({
 
             <Navigation />
           </div>
-        </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );
