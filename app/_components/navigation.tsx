@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import {
   Check,
@@ -48,8 +48,21 @@ const more = [
 ];
 
 export const Navigation = () => {
+  const [open, setOpen] = useState<boolean>(false);
   const [copied, setCopied] = useState<boolean>(false);
   const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    const down = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setOpen((open) => !open);
+      }
+    };
+
+    document.addEventListener("keydown", down);
+    return () => document.removeEventListener("keydown", down);
+  }, []);
 
   const actions = [
     {
@@ -80,7 +93,7 @@ export const Navigation = () => {
     },
   ];
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <button className="fixed bottom-4 left-4 flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border  bg-neutral-100 transition hover:bg-neutral-200 dark:bg-neutral-900 dark:hover:bg-neutral-800 md:left-16 md:top-16">
           <Command className="h-5 w-5" />
