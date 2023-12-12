@@ -1,9 +1,66 @@
-import { Command } from "lucide-react";
+"use client";
+
+import Link from "next/link";
+import { useState } from "react";
+import { useTheme } from "next-themes";
+import {
+  Check,
+  Command,
+  Mail,
+  MessageSquarePlus,
+  Moon,
+  Sun,
+} from "lucide-react";
 
 import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Separator } from "@/components/ui/separator";
+import { Icons } from "@/components/ui/icons";
+
+const projects = [
+  {
+    label: "Tiny Changes",
+    icon: Icons.tinyChanges,
+    link: "https://tinychanges.me",
+  },
+  {
+    label: "Tracker",
+    icon: Icons.tracker,
+    link: "https://tracker.lol",
+  },
+];
 
 export const Navigation = () => {
+  const [copied, setCopied] = useState<boolean>(false);
+  const { theme, setTheme } = useTheme();
+
+  const actions = [
+    {
+      label: copied ? "Copied" : "Email",
+      icon: copied ? Check : Mail,
+      action: () => {
+        if (copied) return;
+
+        setCopied(true);
+        navigator.clipboard.writeText("hello@brucesalcedo.com");
+
+        setTimeout(() => {
+          setCopied(false);
+        }, 3000);
+      },
+    },
+    {
+      label: theme === "light" ? "Dark" : "Light",
+      icon: theme === "light" ? Sun : Moon,
+      action: () => setTheme(theme === "light" ? "dark" : "light"),
+    },
+    {
+      label: "Message",
+      icon: MessageSquarePlus,
+      action: () => {
+        console.log("hello");
+      },
+    },
+  ];
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -29,7 +86,51 @@ export const Navigation = () => {
         </div>
         <Separator />
 
-        <div></div>
+        <div className="flex flex-col gap-4 px-4 py-3">
+          <div className="rounded-sm bg-neutral-200 px-2 py-[6px] text-xs font-medium leading-none dark:bg-neutral-800">
+            Suggested
+          </div>
+
+          <div className="flex items-center justify-around ">
+            {projects.map(({ label, icon: Icon, link }) => (
+              <div
+                className="flex w-[60px] flex-col items-center gap-2"
+                key={label}
+              >
+                <Link
+                  className="grid h-10 w-10 place-items-center rounded-md bg-neutral-950 transition-opacity duration-300 ease-in-out hover:opacity-75"
+                  href={link}
+                >
+                  <Icon />
+                </Link>
+                <div className="  max-w-[55px] truncate text-xs text-muted-foreground">
+                  {label}
+                </div>
+              </div>
+            ))}
+            <Separator
+              orientation="vertical"
+              className="hidden h-10 w-[2px] md:block"
+            />
+
+            {actions.map(({ action, icon: Icon, label }) => (
+              <div
+                key={label}
+                className="flex w-[60px] flex-col items-center gap-2"
+              >
+                <button
+                  className="flex h-10 w-10 items-center justify-center rounded-md bg-neutral-200 transition-opacity duration-300 ease-in-out hover:opacity-75 dark:bg-neutral-800"
+                  onClick={action}
+                >
+                  <Icon className="h-6 w-6" />
+                </button>
+                <div className="  max-w-[55px] truncate text-xs text-muted-foreground">
+                  {label}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );
