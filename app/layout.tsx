@@ -55,7 +55,7 @@ export default function RootLayout({
         className={cn("relative bg-background antialiased", font.className)}
       >
         <Providers>
-          <div className="mx-auto flex max-w-[608px] flex-col gap-32 py-32">
+          <div className="mx-auto flex max-w-[608px] flex-col gap-16 py-16 sm:gap-32 sm:py-32">
             <Header />
             <main>{children}</main>
             <Footer />

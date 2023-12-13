@@ -48,14 +48,14 @@ const technologies = [
 
 export const Technologies = () => {
   return (
-    <div className="space-y-10">
+    <div className="space-y-5 sm:space-y-10">
       <h1
         className="animate-fade-up px-4 font-semibold opacity-0"
         style={{ animationFillMode: "forwards", animationDelay: "1.20s" }}
       >
         Technologies
       </h1>
-      <div className="grid gap-8 sm:grid-cols-2">
+      <div className="grid gap-4 sm:grid-cols-2 sm:gap-8">
         {technologies.map(({ icon: Icon, label, link }, index) => {
           const delay = 1.2 + 0.05 * (index + 1);
           return (

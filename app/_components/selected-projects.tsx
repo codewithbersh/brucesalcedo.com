@@ -26,7 +26,7 @@ const projects = [
 
 export const SelectedProjects = () => {
   return (
-    <div className="flex flex-col gap-10 px-4">
+    <div className="flex flex-col gap-5 px-4 sm:gap-10">
       {projects.map((project, index) => {
         const delay = 60 + 15 * (index + 1);
         return (
