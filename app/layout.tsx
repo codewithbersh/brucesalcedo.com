@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { GeistSans as font } from "geist/font/sans";
 import { cn } from "@/lib/utils";
 import { siteConfig } from "@/config/site";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Providers } from "@/components/providers/providers";
 import { Header } from "./_components/header";
@@ -61,6 +62,7 @@ export default function RootLayout({
             <Navigation />
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
