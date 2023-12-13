@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useSendMessage } from "@/hooks/use-send-message";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { Send } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -19,13 +20,14 @@ import { Textarea } from "@/components/ui/textarea";
 import { DialogModal } from "./dialog-modal";
 
 const formSchema = z.object({
-  email: z.string().email(),
-  body: z.string().min(1).max(512),
+  email: z.string().email("Invalid email."),
+  body: z.string().min(1, "Message too short.").max(512, "Message too long."),
 });
 
 type FormData = z.infer<typeof formSchema>;
 
 export const SendMessageModal = () => {
+  const [error, setError] = useState<boolean>(false);
   const { isOpen, setIsOpen } = useSendMessage();
 
   const form = useForm<FormData>({
@@ -36,9 +38,19 @@ export const SendMessageModal = () => {
     },
   });
 
-  const onSubmit = (values: FormData) => {
-    console.log(values);
+  const onSubmit = async (values: FormData) => {
+    try {
+      await fetch("/api/send", {
+        method: "POST",
+        body: JSON.stringify(values),
+      });
+    } catch (error) {
+      setError(true);
+      console.error(error);
+    }
   };
+
+  const isLoading = form.formState.isSubmitting;
 
   return (
     <DialogModal isOpen={isOpen} setIsOpen={setIsOpen}>
@@ -64,7 +76,11 @@ export const SendMessageModal = () => {
               render={({ field }) => (
                 <FormItem>
                   <FormControl>
-                    <Input placeholder="Your email" {...field} />
+                    <Input
+                      placeholder="Your email"
+                      {...field}
+                      disabled={isLoading}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -79,6 +95,7 @@ export const SendMessageModal = () => {
                   <FormControl>
                     <Textarea
                       placeholder="Say hi or leave a feedback"
+                      disabled={isLoading}
                       {...field}
                     />
                   </FormControl>
@@ -86,9 +103,24 @@ export const SendMessageModal = () => {
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-2">
-              <Send className="mr-2 h-4 w-4" /> Send
-            </Button>
+
+            {form.formState.isSubmitSuccessful ? (
+              <div className="flex h-8 items-center justify-center text-center text-sm text-muted-foreground">
+                {error ? "An error has occured." : "Message sent."}
+              </div>
+            ) : (
+              <Button type="submit" className="mt-2">
+                {isLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending
+                  </>
+                ) : (
+                  <>
+                    <Send className="mr-2 h-4 w-4" /> Send
+                  </>
+                )}
+              </Button>
+            )}
           </form>
         </Form>
       </div>
