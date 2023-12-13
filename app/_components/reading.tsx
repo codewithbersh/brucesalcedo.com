@@ -10,8 +10,18 @@ export const Reading = () => {
   return (
     <div className="space-y-10 px-4">
       <div className="flex items-center justify-between gap-4">
-        <h1 className="font-semibold">Reading</h1>
-        <h1 className="text-muted-foreground">Sun 10 Dec 23</h1>
+        <h1
+          className="animate-fade-up font-semibold opacity-0"
+          style={{ animationFillMode: "forwards", animationDelay: "1.75s" }}
+        >
+          Reading
+        </h1>
+        <h1
+          className="animate-fade-up text-muted-foreground opacity-0"
+          style={{ animationFillMode: "forwards", animationDelay: "1.80s" }}
+        >
+          Sun 10 Dec 23
+        </h1>
       </div>
       <div className="flex items-center gap-4">
         <Image
@@ -19,11 +29,22 @@ export const Reading = () => {
           height={2048}
           src={current.cover}
           alt="Book cover"
-          className="max-w-[64px]"
+          className="animate-fade-up max-w-[64px] opacity-0"
+          style={{ animationFillMode: "forwards", animationDelay: "1.95s" }}
         />
         <div className="space-y-1">
-          <h1 className="font-medium">{current.title}</h1>
-          <h1 className="text-muted-foreground">{current.author}</h1>
+          <h1
+            className="animate-fade-up font-medium opacity-0"
+            style={{ animationFillMode: "forwards", animationDelay: "2.10s" }}
+          >
+            {current.title}
+          </h1>
+          <h1
+            className="animate-fade-up text-muted-foreground opacity-0"
+            style={{ animationFillMode: "forwards", animationDelay: "2.25s" }}
+          >
+            {current.author}
+          </h1>
         </div>
       </div>
     </div>

@@ -27,44 +27,51 @@ const projects = [
 export const SelectedProjects = () => {
   return (
     <div className="flex flex-col gap-10 px-4">
-      {projects.map((project) => (
-        <Link
-          key={project.title}
-          className="group cursor-pointer space-y-6 rounded-lg bg-neutral-100 p-4 transition-all duration-300 ease-in-out hover:opacity-75 dark:bg-neutral-900 sm:p-6"
-          href={project.link}
-          target="_blank"
-        >
-          <div className="flex items-start justify-between">
-            <div className="space-y-1">
-              <h1 className="font-semibold group-hover:underline ">
-                {project.title}
-              </h1>
-              <p className="text-muted-foreground group-hover:underline ">
-                {project.description}
-              </p>
+      {projects.map((project, index) => {
+        const delay = 60 + 15 * (index + 1);
+        return (
+          <Link
+            key={project.title}
+            className="animate-fade-up group cursor-pointer space-y-6 rounded-lg bg-neutral-100 p-4 opacity-0 transition-all duration-300 ease-in-out hover:bg-neutral-200/50 dark:bg-neutral-900 dark:hover:bg-neutral-800/50 sm:p-6"
+            style={{
+              animationFillMode: "forwards",
+              animationDelay: `${delay / 100}s`,
+            }}
+            href={project.link}
+            target="_blank"
+          >
+            <div className="flex items-start justify-between">
+              <div className="space-y-1">
+                <h1 className="font-semibold group-hover:underline ">
+                  {project.title}
+                </h1>
+                <p className="text-muted-foreground group-hover:underline ">
+                  {project.description}
+                </p>
+              </div>
+              <h1 className="text-muted-foreground">{project.date}</h1>
             </div>
-            <h1 className="text-muted-foreground">{project.date}</h1>
-          </div>
-          <Image
-            alt="Project Image"
-            width={4288}
-            height={2496}
-            src={project.image.light}
-            className="dark:hidden"
-            sizes="100vw"
-            priority
-          />
-          <Image
-            alt="Project Image"
-            width={4288}
-            height={2496}
-            src={project.image.dark}
-            className="hidden dark:inline"
-            sizes="100vw"
-            priority
-          />
-        </Link>
-      ))}
+            <Image
+              alt="Project Image"
+              width={4288}
+              height={2496}
+              src={project.image.light}
+              className="dark:hidden"
+              sizes="100vw"
+              priority
+            />
+            <Image
+              alt="Project Image"
+              width={4288}
+              height={2496}
+              src={project.image.dark}
+              className="hidden dark:inline"
+              sizes="100vw"
+              priority
+            />
+          </Link>
+        );
+      })}
     </div>
   );
 };
