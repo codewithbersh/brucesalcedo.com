@@ -6,6 +6,7 @@ import { useSendMessage } from "@/hooks/use-send-message";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Loader2, Send } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -104,9 +105,27 @@ export const SendMessageModal = () => {
               )}
             />
 
-            {form.formState.isSubmitSuccessful ? (
-              <div className="flex h-8 items-center justify-center text-center text-sm text-muted-foreground">
-                {error ? "An error has occured." : "Message sent."}
+            {form.formState.isSubmitted ? (
+              <div
+                style={{
+                  animationFillMode: "forwards",
+                  animationDelay: `0.15s`,
+                }}
+                className={cn(
+                  "animate-fade-up mt-2 flex h-8 items-center justify-center  gap-2 text-center text-sm text-muted-foreground opacity-0",
+                  error && "text-destructive dark:text-red-400",
+                )}
+              >
+                <span>{error ? "An error has occured." : "Message sent."}</span>
+                <span
+                  onClick={() => {
+                    form.reset();
+                    setError(false);
+                  }}
+                  className="cursor-pointer text-primary hover:underline"
+                >
+                  Reset
+                </span>
               </div>
             ) : (
               <Button type="submit" className="mt-2">
