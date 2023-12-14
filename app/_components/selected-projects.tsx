@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
 const projects = [
   {
@@ -41,13 +42,16 @@ export const SelectedProjects = () => {
             target="_blank"
           >
             <div className="flex items-start justify-between">
-              <div className="space-y-1">
-                <h1 className="font-semibold group-hover:underline ">
-                  {project.title}
-                </h1>
-                <p className="text-muted-foreground group-hover:underline ">
-                  {project.description}
-                </p>
+              <div className="flex items-start justify-between gap-4">
+                <div className="space-y-1">
+                  <h1 className="font-semibold sm:group-hover:underline ">
+                    {project.title}
+                  </h1>
+                  <p className="text-muted-foreground sm:group-hover:underline ">
+                    {project.description}
+                  </p>
+                </div>
+                <ArrowUpRight className="hidden h-6 w-6 sm:group-hover:inline" />
               </div>
               <h1 className="text-muted-foreground">{project.date}</h1>
             </div>
