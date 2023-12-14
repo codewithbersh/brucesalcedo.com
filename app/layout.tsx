@@ -10,6 +10,13 @@ import { Header } from "./_components/header";
 import { Footer } from "./_components/footer";
 import { Navigation } from "./_components/navigation";
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  minimumScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
