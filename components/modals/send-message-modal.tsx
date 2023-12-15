@@ -59,7 +59,7 @@ export const SendMessageModal = () => {
         <div className="flex items-center justify-between">
           <h1 className="font-medium">Send message</h1>
 
-          <div className="flex items-center">
+          <div className="hidden items-center sm:flex">
             <span className="mr-2 text-sm text-muted-foreground">Exit</span>
             <span className="rounded border bg-neutral-100 px-1.5 py-1 text-[10px] font-medium dark:bg-neutral-900">
               ESC
@@ -112,7 +112,7 @@ export const SendMessageModal = () => {
                   animationDelay: `0.15s`,
                 }}
                 className={cn(
-                  "animate-fade-up mt-2 flex h-8 items-center justify-center  gap-2 text-center text-sm text-muted-foreground opacity-0",
+                  "mt-2 flex h-8 animate-fade-up items-center justify-center  gap-2 text-center text-sm text-muted-foreground opacity-0",
                   error && "text-destructive dark:text-red-400",
                 )}
               >

@@ -107,7 +107,7 @@ export const QuickActionsModal = () => {
           </span>
         </div>
 
-        <div className="flex items-center">
+        <div className="hidden items-center sm:flex">
           <span className="mr-2 text-sm text-muted-foreground">Exit</span>
           <span className="rounded border bg-neutral-100 px-1.5 py-1 text-[10px] font-medium dark:bg-neutral-900">
             ESC
