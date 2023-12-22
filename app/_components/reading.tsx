@@ -1,9 +1,10 @@
 import Image from "next/image";
 
 const current = {
-  title: "Deep Work",
-  author: "Cal Newport",
-  cover: "/deep-work.png",
+  title: "Atomic Habits",
+  author: "James Clear",
+  cover: "/atomic-habits.png",
+  date: "2023-12-22",
 };
 
 export const Reading = () => {
@@ -17,20 +18,21 @@ export const Reading = () => {
           Reading
         </h1>
         <h1
-          className="animate-fade-up text-muted-foreground opacity-0"
+          className="animate-fade-up text-sm text-muted-foreground opacity-0"
           style={{ animationFillMode: "forwards", animationDelay: "1.80s" }}
         >
-          Sun 10 Dec 23
+          {new Date(current.date).toDateString()}
         </h1>
       </div>
       <div className="flex items-center gap-4">
         <Image
-          width={1464}
-          height={2048}
+          width={3991}
+          height={4466}
           src={current.cover}
           alt="Book cover"
-          className="animate-fade-up max-w-[64px] opacity-0"
+          className="max-w-[64px] animate-fade-up opacity-0"
           style={{ animationFillMode: "forwards", animationDelay: "1.95s" }}
+          sizes="100vw"
         />
         <div className="space-y-1">
           <h1
