@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useSendMessage } from "@/hooks/use-send-message";
 
 export const Header = () => {
@@ -8,12 +9,13 @@ export const Header = () => {
   return (
     <div className="space-y-10 px-4">
       <div className="space-y-2">
-        <h1
+        <Link
           className="animate-fade-up font-semibold opacity-0"
           style={{ animationFillMode: "forwards", animationDelay: "0.15s" }}
+          href="/"
         >
           Bruce Salcedo
-        </h1>
+        </Link>
         <h2
           className="animate-fade-up text-muted-foreground opacity-0"
           style={{ animationFillMode: "forwards", animationDelay: "0.30s" }}
