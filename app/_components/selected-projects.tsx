@@ -15,7 +15,7 @@ const projects = [
   },
   {
     title: "Tracker",
-    description: "Simplified habit tracker.",
+    description: "Personal finance tracker.",
     date: "Oct 2023",
     image: {
       light: "/tracker-light.png",
@@ -33,7 +33,7 @@ export const SelectedProjects = () => {
         return (
           <Link
             key={project.title}
-            className="animate-fade-up group cursor-pointer space-y-6 rounded-lg bg-neutral-100 p-4 opacity-0 transition-all duration-300 ease-in-out hover:bg-neutral-200/50 dark:bg-neutral-900 dark:hover:bg-neutral-800/50 sm:p-6"
+            className="group animate-fade-up cursor-pointer space-y-6 rounded-lg bg-neutral-100 p-4 opacity-0 transition-all duration-300 ease-in-out hover:bg-neutral-200/50 dark:bg-neutral-900 dark:hover:bg-neutral-800/50 sm:p-6"
             style={{
               animationFillMode: "forwards",
               animationDelay: `${delay / 100}s`,
