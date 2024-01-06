@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const current = {
-  title: "Atomic Habits",
-  author: "James Clear",
-  cover: "/atomic-habits.png",
-  date: "2023-12-22",
+  title: "How To Win Friends & Influence People",
+  author: "Dale Carnegie",
+  cover: "/htwfaip.png",
+  date: "2024-01-06",
 };
 
 export const Reading = () => {
