@@ -22,7 +22,7 @@ export const CurrentTimeDoha = () => {
         minute: "2-digit",
       });
       setTime(dohaTime);
-    }, 15000);
+    }, 1000);
 
     return () => clearInterval(interval);
   }, []);
