@@ -1,10 +1,10 @@
 import Image from "next/image";
 
 const current = {
-  title: "How To Win Friends & Influence People",
-  author: "Dale Carnegie",
-  cover: "/htwfaip.png",
-  date: "2024-01-06",
+  title: "The Lean Startup",
+  author: "Eric Ries",
+  cover: "/the-lean-startup.png",
+  date: "2024-03-06",
 };
 
 export const Reading = () => {
@@ -26,8 +26,8 @@ export const Reading = () => {
       </div>
       <div className="flex items-center gap-4">
         <Image
-          width={3991}
-          height={4466}
+          width={3061}
+          height={3696}
           src={current.cover}
           alt="Book cover"
           className="max-w-[64px] animate-fade-up opacity-0"
