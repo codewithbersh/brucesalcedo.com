@@ -16,8 +16,8 @@ const socials = [
     link: "https://twitter.com/codewithbersh/",
   },
   {
-    label: "Read.cv",
-    link: "https://read.cv/brucesalcedo/",
+    label: "LinkedIn",
+    link: "https://www.linkedin.com/in/bruce-salcedo-7b46a4289/",
   },
 ];
 
