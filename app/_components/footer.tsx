@@ -17,7 +17,7 @@ const socials = [
   },
   {
     label: "LinkedIn",
-    link: "https://www.linkedin.com/in/bruce-salcedo-7b46a4289/",
+    link: "https://www.linkedin.com/in/brucesalcedo/",
   },
 ];
 
